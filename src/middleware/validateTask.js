@@ -1,4 +1,4 @@
-import { body } from 'express-validator';
+import { body, param } from 'express-validator';
 import { checkValidationResults } from './handleValidationErrors.js';
 
 export const validateTask = [
@@ -17,4 +17,12 @@ export const validateTask = [
     .withMessage('completed must be true or false'),
 
   checkValidationResults,
+];
+
+export const validateTaskId = [
+  param('id')
+    .isInt({ min: 1 })
+    .withMessage('Post id must be a positive integer'),
+  
+    checkValidationResults,
 ];
