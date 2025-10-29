@@ -12,12 +12,12 @@ export async function create(data) {
 }
 
 export async function findById(id) {
-  const task = prisma.task.findUnique( 
-    {where: {id},
+  const task = await prisma.task.findUnique({
+    where: { id },
     select: {
       id: true,
       title: true,
-      completed: true
+      completed: true,
     },
   });
   return task;
